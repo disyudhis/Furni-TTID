@@ -13,6 +13,10 @@ class CategoryManage extends Component
     protected $rules = [
         'name' => 'required|min:1|unique:categories'
     ];
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function store(CategoryService $categoryService)
     {
@@ -24,12 +28,6 @@ class CategoryManage extends Component
         $this->name = null;
         $this->alert('success', 'Category added succesfully');
     }
-
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
-
 
     public function render()
     {

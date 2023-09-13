@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Category;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Services\Category\CategoryService;
@@ -10,12 +11,14 @@ use Livewire\WithPagination;
 class CategoryIndex extends Component
 {
     use WithPagination;
+    use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     public $entries = 5;
     public $search;
 
     public function delete(CategoryService $categoryService, $id)
     {
+        // dd($id);
         $categoryService->delete($id);
         $this->alert('success', 'Category succesfully deleted');
     }

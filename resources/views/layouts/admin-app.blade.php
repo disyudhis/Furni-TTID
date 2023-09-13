@@ -50,7 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
-        <a href="index.html">
+        <a href="{{ url('/') }}">
             <img alt="Logo" src="{{ asset('dist/assets/media/logos/logo-dark.png') }}" />
         </a>
         <!--end::Logo-->
@@ -197,7 +197,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Theme Bundle-->
     <!--begin::Page Vendors(used by this page)-->
     <script src="{{ asset('dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="{{ asset('dist///maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM') }}"></script>
+    {{-- <script src="{{ asset('dist///maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM') }}"></script> --}}
     <script src="{{ asset('dist/assets/plugins/custom/gmaps/gmaps.js') }}"></script>
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
