@@ -1,11 +1,11 @@
 <div class="card card-custom gutter-b example example-compact">
     <div class="card-header">
         <h3 class="card-title">
-            Add Product
+            {{ $selected ? 'Edit Product' : 'Add Product' }}
         </h3>
     </div>
     {{-- Begin:Form --}}
-    <form wire:submit.prevent="store" class="form" enctype="multipart/form-data">
+    <form wire:submit.prevent="{{ $selected ? 'update' : 'store' }}" class="form" enctype="multipart/form-data">
         <div class="card-body">
             <div class="form-group">
                 <label>Title</label>
@@ -15,7 +15,8 @@
                             <i class="la la-exclamation-triangle icon-lg"></i>
                         </span>
                     </div>
-                    <input type="text" wire:model="title" name="title" class="form-control" placeholder="Sofa Keren">
+                    <input type="text" wire:model="title" name="title" class="form-control"
+                        placeholder="Sofa Keren">
                 </div>
                 <span class="form-text text-muted">This field required</span>
                 @error('title')
@@ -65,12 +66,12 @@
             </div>
             <div class="form-group">
                 <label>Category</label>
-                <select class="custom-select form-control">
+                <select wire:model='category' name="category" class="custom-select form-control">
                     <option selected value="">Open this option</option>
                     @forelse ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @empty
-                        <option value="">No Product</option>
+                        <option value="">No Category</option>
                     @endforelse
                 </select>
                 <span class="form-text text-muted">This field required</span>
@@ -81,13 +82,18 @@
             <div class="form-group">
                 <label>Image</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile">
+                    <input type="file" name="image" wire:model="image" class="custom-file-input" id="customFile">
                     <label class="custom-file-label" for="customFile">Choose Image</label>
                 </div>
+                @error('image')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" wire:loading.attr="disabled" class="btn btn-primary">
+                <div wire:loading wire:target='store'><span class="spinner"></span></div>Submit
+            </button>
             <a href="{{ url('/index-product') }}" type="button" class="btn btn-secondary">Cancel</a>
         </div>
     </form>

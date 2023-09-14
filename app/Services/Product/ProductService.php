@@ -27,9 +27,13 @@ class ProductService extends AppService implements AppServiceInterface
 
     public function create($data)
     {
-        return ProductTable::create([
-            'name' => $data['name'],
-        ]);
+        return ProductTable::create($data);
+    }
+
+    public function edit($id)
+    {
+        $row = ProductTable::findOrFail($id);
+        return $row;
     }
 
     public function update($id, $data)

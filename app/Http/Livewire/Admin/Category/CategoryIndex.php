@@ -18,7 +18,6 @@ class CategoryIndex extends Component
 
     public function delete(CategoryService $categoryService, $id)
     {
-        // dd($id);
         $categoryService->delete($id);
         $this->alert('success', 'Category succesfully deleted');
     }

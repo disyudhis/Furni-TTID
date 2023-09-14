@@ -29,7 +29,7 @@ Route::group(['middleware' => 'user'], function () {
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', AdminDashboard::class)->name('adminDashboard');
     Route::get('/index-product', ProductIndex::class);
-    Route::get('/manage-product', ProductManage::class);
+    Route::get('/manage-product', ProductManage::class)->name('manage-product');
     Route::get('/index-category', CategoryIndex::class)->name('index-category');
     Route::get('/manage-category', CategoryManage::class);
 });

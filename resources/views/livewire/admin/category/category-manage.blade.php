@@ -25,7 +25,7 @@
         </div>
         <div class="card-footer">
             <button type="submit" wire:loading.attr="disabled" class="btn btn-primary">
-                <div wire:loading wire:target="store"><span class="spinner spinner-track"></span>
+                <div wire:loading wire:target="store"><span class="spinner"></span>
                 </div>
                 Submit
             </button>

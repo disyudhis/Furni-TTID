@@ -23,7 +23,11 @@ class Product extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'title',
+        'price',
+        'discount_price',
+        'image',
+        'category_id'
     ];
 
     /**
